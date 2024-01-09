@@ -30,3 +30,5 @@ be used by enabling an expermental feature in the `package.json file`
 - There is always a chance that while talking to the database a problem may occur. Hence always use
 try catch or promises for error handling.
 - DATABASE IS ALWAYS IN ANOTHER CONTINENT. Matlab time lagega. Use async and await.
+- Remember to always use full import paths with proper file extensions. This could otherwise lead to
+modules not beign imported properly.
