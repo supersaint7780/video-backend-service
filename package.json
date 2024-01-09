@@ -1,0 +1,17 @@
+{
+  "name": "video-backend-service",
+  "version": "1.0.0",
+  "description": "A video backend service.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "video",
+    "backend",
+    "express",
+    "node"
+  ],
+  "author": "Ayush Maurya",
+  "license": "ISC"
+}
