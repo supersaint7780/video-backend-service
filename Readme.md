@@ -15,6 +15,16 @@ running in background.
 empty repositories we create a file `.gitkeep` within the folder which causes the git to track the
 given folder. This file could have been any file but the general convention is to use it as `.gitkeep`.
 
+- while building this project dotenv package does not officially support the `ES6` syntax so we need to
+stick to the commonJs version of doing so. However to maintain consistency in the code es6 technique can
+be used by enabling an expermental feature in the `package.json file`
+
+  ```json
+  "scripts": {
+      "dev": "nodemon -r dotenv/config --experimental-json-modules ./src/index.js"
+  },
+  ```
+
 ### Points to remember
 
 - There is always a chance that while talking to the database a problem may occur. Hence always use
