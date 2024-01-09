@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "dev": "nodemon ./src/index.js"
   },
   "keywords": [
     "video",
@@ -14,5 +14,8 @@
     "node"
   ],
   "author": "Ayush Maurya",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
 }

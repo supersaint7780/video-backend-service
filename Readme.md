@@ -4,10 +4,6 @@ Backend for a video application created using express, node, mongoose and mongod
 
 Data model: [Link](https://app.eraser.io/workspace/GR86oE1vuFjLIJl3IUh6?origin=share)
 
-
-
-
-
 ### Learnings
 
 - **Video/Image/File Upload Scenario**: In real life development we generally tend to keep the media uploaded by the user
