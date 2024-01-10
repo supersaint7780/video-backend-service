@@ -66,6 +66,10 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 };
 
 // create custom methods
+// while creating new methods never use arrow functions
+// because they once and forever bound to the outer context at the
+// point of creation in this case to the global object
+// and invoking it will perform no desired effect
 userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
