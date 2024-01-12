@@ -99,10 +99,8 @@ const loginUser = asyncHandler(async (req, res) => {
   // STEP 3: If the user exists match the password
   // STEP 4: If password matched generate accessToken and refreshToken
   // STEP 5: Send to the user and send the cookie
-
   const { email, username, password } = req.body;
-
-  if (email.trim() == "" && username.trim() == "") {
+  if (!(email || username)) {
     throw new ApiError(400, "Email or Username required");
   }
 
@@ -148,12 +146,15 @@ const loginUser = asyncHandler(async (req, res) => {
     .cookie("accessToken", accessToken, options)
     .cookie("refreshToken", refreshToken, options)
     .json(
-      new ApiResponse(200, {
-        user: loggedInUser,
-        accessToken,
-        refreshToken,
-      }),
-      "User logged In Succesfully"
+      new ApiResponse(
+        200,
+        {
+          user: loggedInUser,
+          accessToken,
+          refreshToken,
+        },
+        "User logged In Succesfully"
+      )
     );
 });
 
