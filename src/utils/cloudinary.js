@@ -25,7 +25,7 @@ const uploadOnCloudinary = async (localFilePath) => {
 
     // remove the locally saved temporay file as upload got failed
     // check if file exists
-    if (fs.existsSync(localFilePath)) fs.unlinkSync(localFilePath); 
+    fs.unlinkSync(localFilePath); 
     return null;
   }
 };
