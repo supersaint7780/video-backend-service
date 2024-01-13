@@ -32,3 +32,7 @@ try catch or promises for error handling.
 - DATABASE IS ALWAYS IN ANOTHER CONTINENT. Matlab time lagega. Use async and await.
 - Remember to always use full import paths with proper file extensions. This could otherwise lead to
 modules not beign imported properly.
+
+### Advice
+
+- When updating files try using separate controllers for file. It ensures the unncessarily text data is not always sent to the user.

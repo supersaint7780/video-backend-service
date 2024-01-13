@@ -31,3 +31,8 @@ const uploadOnCloudinary = async (localFilePath) => {
 };
 
 export { uploadOnCloudinary };
+
+// cloudinary.v2.api
+//   .delete_resources(['rwxiztgllkvfvmedhyyk'], 
+//     { type: 'upload', resource_type: 'image' })
+//   .then(console.log);
