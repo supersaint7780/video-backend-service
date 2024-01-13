@@ -24,6 +24,7 @@ be used by enabling an expermental feature in the `package.json file`
       "dev": "nodemon -r dotenv/config --experimental-json-modules ./src/index.js"
   },
   ```
+- For managing subscriptions we could have simply added a array in our user data model which kept a track of subscribers but accounts can have subscribers in millions whihc would make it very expensive to operate on that data so we created another model where we manange subscriptions
 
 ### Points to remember
 
