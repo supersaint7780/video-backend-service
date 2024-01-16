@@ -20,19 +20,22 @@ const uploadOnCloudinary = async (localFilePath) => {
     // so now delete it
     if (fs.existsSync(localFilePath)) fs.unlinkSync(localFilePath);
     return response;
-
   } catch (error) {
-
     // remove the locally saved temporay file as upload got failed
     // check if file exists
-    fs.unlinkSync(localFilePath); 
+    fs.unlinkSync(localFilePath);
     return null;
   }
 };
 
-export { uploadOnCloudinary };
+const deleteOnCloudinary = async (cloudinaryUrl) => {
+  let publicId = cloudinaryUrl.split("/").pop().split(".")[0];
+  await cloudinary.uploader.destroy(publicId);
+};
+
+export { uploadOnCloudinary, deleteOnCloudinary };
 
 // cloudinary.v2.api
-//   .delete_resources(['rwxiztgllkvfvmedhyyk'], 
+//   .delete_resources(['rwxiztgllkvfvmedhyyk'],
 //     { type: 'upload', resource_type: 'image' })
 //   .then(console.log);

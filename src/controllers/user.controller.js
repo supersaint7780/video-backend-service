@@ -1,7 +1,7 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/user.model.js";
-import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import { uploadOnCloudinary, deleteOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import fs from "fs";
 import jwt from "jsonwebtoken";
@@ -321,15 +321,20 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
 
   const avatar = await uploadOnCloudinary(avatarLocalPath);
 
-  if (!avatar.url) {
+  if (!avatar) {
     throw new ApiError(400, "Error while uploading the avatar");
   }
+
+  // due to middleware the req contains user
+  // so before updating user we extract old avatar url
+  // ans use it to delete the image from cloudinary
+  await deleteOnCloudinary(req.user?.avatar);
 
   const user = await User.findByIdAndUpdate(
     req.user?._id,
     {
       $set: {
-        avatar,
+        avatar: avatar.url,
       },
     },
     {
@@ -352,15 +357,17 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
 
   const coverImage = await uploadOnCloudinary(coverImageLocalPath);
 
-  if (!coverImage.url) {
+  if (!coverImage) {
     throw new ApiError(400, "Error while uploading the cover image");
   }
+
+  await deleteOnCloudinary(req.user?.coverImage);
 
   const user = await User.findByIdAndUpdate(
     req.user?._id,
     {
       $set: {
-        coverImage,
+        coverImage: coverImage.url,
       },
     },
     {
